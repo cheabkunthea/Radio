@@ -216,7 +216,7 @@ app.controller('postController', [ '$scope', '$rootScope', '$sce', function($sco
 (function(){
   'use strict';
  
-  var app = angular.module('app', ['onsen']);
+  // var app = angular.module('app', ['onsen']);
 
   // This is where you need to set up the the Ad IDs
   // You need to use different IDs for a banner and also a different ID for an Interstitial
