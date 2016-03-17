@@ -28,5 +28,7 @@
     <!--<gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />-->
     <!--<gap:plugin name="nl.x-services.plugins.socialsharing" source="plugins.cordova.io" />-->
     <!--<gap:plugin name="cordova-plugin-admob" source="npm" />-->
+    <preference name="android-build-tool" value="gradle" /> 
+    <gap:plugin name="cordova-plugin-admobpro" source="npm" />
 
 </widget>
