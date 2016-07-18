@@ -7,54 +7,7 @@ var app = angular.module('app', ['onsen', 'ngAudio','twitter.timeline']);
 *  https://github.com/userapp-io/twitter-timeline-angularjs
 */
 
-angular.module('twitter.timeline', [])
-	.directive('twitterTimeline', [function() {
-		return {
-			restrict: 'A',
-			scope: {
-				cssUrl: "@",
-				autoResize: "="
-			},
-			link: function (scope, element, attrs) {
-				$('body').removeAttr('data-twttr-rendered');
 
-				element
-					.attr('id', 'twitter-feed')
-					.attr("width", "100%" || attrs.width)
-					.attr('data-chrome', 'noheader transparent')
-					.attr('data-widget-id', attrs.twitterTimeline)
-					.addClass('twitter-timeline');
-
-				function render() {
-					var body = $('.twitter-timeline').contents().find('body');
-
-					if (scope.cssUrl) {
-						body.append($('<link/>', { rel: 'stylesheet', href: scope.cssUrl, type: 'text/css' }));
-					}
-
-					function setHeight() {
-						if (body.find('.stream').length == 0) {
-							setTimeout(setHeight, 100);
-						} else {
-							body.find('.stream').addClass('stream-new').removeClass('stream').css('height', 'auto');
-							$('.twitter-timeline').css('height', (body.height() + 20) + 'px');
-						}
-					}
-
-					if (scope.autoResize) {
-						setHeight();
-					}
-				}
-
-				if (!$('#twitter-wjs').length) {
-					$.getScript((/^http:/.test(document.location)?'http':'https') + '://platform.twitter.com/widgets.js', function() {
-						render();
-						$('.twitter-timeline').load(render);
-	        		});
-				}
-			}
-		};
-	}]);
 
 // Radio Controller
 var radio = null;
@@ -62,7 +15,7 @@ var isPlaying = false;
 
 app.controller('radioController', function($scope, $sce, ngAudio){
 	
-	$scope.radioURL = 'http://46.28.49.164:7926/stream'; // http://streams.kqed.org/kqedradio.m3u
+	$scope.radioURL = 'http://91.121.165.88:8116/stream'; // http://streams.kqed.org/kqedradio.m3u
 	$scope.buttonIcon = '<span class="ion-ios7-play"></span>';
 
 	if (radio!==null) {		
@@ -151,7 +104,7 @@ app.filter('htmlToPlaintext', function() {
 
 app.controller('newsController', [ '$http', '$scope', '$rootScope', function($http, $scope, $rootScope){
 
-	$scope.yourAPI = 'http://kwetudesign.co.ke/blog/api/get_recent_posts/';
+	$scope.yourAPI = 'http://hugeclan.com/api/get_recent_posts/';
 	$scope.items = [];
 	$scope.totalPages = 0;
 	$scope.currentPage = 1;
